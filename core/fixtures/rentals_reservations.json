@@ -1,0 +1,79 @@
+[
+  {
+    "model": "core.rental",
+    "pk": 1,
+    "fields": {
+      "name": "rental-1"
+    }
+  },
+  {
+    "model": "core.rental",
+    "pk": 2,
+    "fields": {
+      "name": "rental-2"
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 2,
+    "fields": {
+      "checkin": "2022-01-01",
+      "checkout": "2022-01-03",
+      "rental": 1
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 3,
+    "fields": {
+      "checkin": "2022-01-07",
+      "checkout": "2022-01-13",
+      "rental": 1
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 4,
+    "fields": {
+      "checkin": "2022-01-05",
+      "checkout": "2022-01-07",
+      "rental": 2
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 5,
+    "fields": {
+      "checkin": "2022-01-15",
+      "checkout": "2022-01-17",
+      "rental": 2
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 6,
+    "fields": {
+      "checkin": "2022-01-04",
+      "checkout": "2022-01-05",
+      "rental": 1
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 7,
+    "fields": {
+      "checkin": "2022-05-06",
+      "checkout": "2022-05-09",
+      "rental": 2
+    }
+  },
+  {
+    "model": "core.reservation",
+    "pk": 8,
+    "fields": {
+      "checkin": "2022-05-02",
+      "checkout": "2022-05-04",
+      "rental": 2
+    }
+  }
+]
