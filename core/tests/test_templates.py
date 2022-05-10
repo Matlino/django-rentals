@@ -8,10 +8,10 @@ from core.models import Reservation, Rental
 class RentalTest(TestCase):
 
     def test_no_rentals(self):
-        url = reverse('rentals')
+        url = reverse('reservations')
         resp = self.client.get(url)
 
-        self.assertContains(resp, settings.CUSTOM_MSGS['no_rentals'])
+        self.assertContains(resp, settings.CUSTOM_MSGS['no_reservations'])
 
     def test_reservation_data_display(self):
         rental_name = 'Test rental'
@@ -19,7 +19,7 @@ class RentalTest(TestCase):
         r1 = Reservation.objects.create(checkin='2022-01-01', checkout='2022-01-03', rental=rental)
         r2 = Reservation.objects.create(checkin='2022-01-06', checkout='2022-01-07', rental=rental)
         r3 = Reservation.objects.create(checkin='2022-01-04', checkout='2022-01-05', rental=rental)
-        url = reverse('rentals')
+        url = reverse('reservations')
         resp = self.client.get(url)
 
         self.assertInHTML(f"""

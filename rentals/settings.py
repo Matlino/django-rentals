@@ -141,10 +141,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CUSTOM_MSGS = {
-    'no_rentals': 'No rentals yet.'
-}
-
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: True if DEBUG else False,
-    'RENDER_PANELS': True
+    'no_reservations': 'No reservations yet.'
 }

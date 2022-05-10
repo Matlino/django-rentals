@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rentals</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+{% if reservations %}
+  <table class='rentals-table'>
+    <tr>
+      <th>Rental_name</th>
+      <th>ID</th>
+      <th>Checkin</th>
+      <th>Checkout</th>
+      <th>Previous reservation, ID</th>
+    </tr>
+    {% for reservation in reservations %}
+        <tr>
+          <td>{{ reservation.rental.name }}</td>
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.checkin | date:'Y-m-d' }}</td>
+          <td>{{ reservation.checkout | date:'Y-m-d' }}</td>
+          <td>
+          {% if reservation.prev_reservation_id == reservation.id %}
+            -
+          {% else %}
+            {{ reservation.prev_reservation_id }}
+          {% endif %}
+          </td>
+        </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>{{ no_reservations }}</p>
+{% endif %}
+</body>
+
+</html>
