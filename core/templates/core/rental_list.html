@@ -1,36 +1,46 @@
 {% load static %}
 {% load core_extras %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rentals</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+</head>
 
+<body>
 {% if rentals %}
   <table class='rentals-table'>
-  <tr>
-    <th>Rental_name</th>
-    <th>ID</th>
-    <th>Checkin</th>
-    <th>Checkout</th>
-    <th>Previous reservation, ID</th>
-  </tr>
-  {% for rental in rentals %}
-    {% with reservations=rental.reservation_set.all %}
-    {% for reservation in reservations %}
-      {% with previous_element=reservations|previous:forloop.counter0 %}
+    <tr>
+      <th>Rental_name</th>
+      <th>ID</th>
+      <th>Checkin</th>
+      <th>Checkout</th>
+      <th>Previous reservation, ID</th>
+    </tr>
+    {% for rental in rentals %}
+      {% with reservations=rental.reservation_set.all %}
+        {% for reservation in reservations %}
+          {% with previous_element=reservations|previous:forloop.counter0 %}
 
-      <tr>
-        <td>{{ reservation.rental }}</td>
-        <td>{{ reservation.id }}</td>
-        <td>{{ reservation.checkin | date:'Y-m-d' }}</td>
-        <td>{{ reservation.checkout | date:'Y-m-d' }}</td>
-        <td>{{ previous_element.id|default:"-" }}</td>
-      </tr>
+            <tr>
+              <td>{{ reservation.rental }}</td>
+              <td>{{ reservation.id }}</td>
+              <td>{{ reservation.checkin | date:'Y-m-d' }}</td>
+              <td>{{ reservation.checkout | date:'Y-m-d' }}</td>
+              <td>{{ previous_element.id|default:"-" }}</td>
+            </tr>
 
+          {% endwith %}
+        {% endfor %}
       {% endwith %}
     {% endfor %}
-    {% endwith %}
-  {% endfor %}
   </table>
 
 {% else %}
   <p>{{ no_rentals }}</p>
 {% endif %}
+</body>
+
+</html>
